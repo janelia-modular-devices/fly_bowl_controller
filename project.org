@@ -57,7 +57,15 @@
        "result": null
      }
      setVisibleBacklightsOnAtPower 68
+     {
+       "id": "setVisibleBacklightsOnAtPower",
+       "result": null
+     }
      setVisibleBacklightsOff
+     {
+       "id": "setVisibleBacklightsOff",
+       "result": null
+     }
      setIrBacklightsOff
      {
        "id": "setIrBacklightsOff",
