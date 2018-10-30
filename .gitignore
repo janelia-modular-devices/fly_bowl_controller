@@ -1,0 +1,9 @@
+*.bak
+*.bck
+*~
+_autosave-*
+*.tmp
+*-cache*
+*-rescue*
+.DS_Store
+tmp-*

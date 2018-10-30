@@ -1,0 +1,18 @@
+* Header                                                           :noexport:
+
+  #+MACRO: name fly_bowl_controller
+  #+MACRO: version 1.0
+  #+MACRO: license BSD, Open-Source Hardware
+  #+MACRO: url https://github.com/janelia-modular-devices/fly_bowl_controller
+  #+AUTHOR: Peter Polidoro
+  #+EMAIL: peterpolidoro@gmail.com
+
+* Description
+
+  This device controls the IR and visible backlights in the fly bowl rig along
+  with the backlight cooling fans and indicator lights.
+
+* Usage Instructions
+
+
+* Build Instructions
