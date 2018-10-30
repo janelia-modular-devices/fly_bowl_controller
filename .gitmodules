@@ -10,3 +10,6 @@
 [submodule "generate_modular_device_documentation"]
 	path = generate_modular_device_documentation
 	url = https://github.com/janelia-modular-devices/generate_modular_device_documentation.git
+[submodule "firmware/BacklightController"]
+	path = firmware/BacklightController
+	url = https://github.com/janelia-arduino/BacklightController.git
