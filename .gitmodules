@@ -1,0 +1,9 @@
+[submodule "firmware/FlyBowlController"]
+	path = firmware/FlyBowlController
+	url = https://github.com/janelia-arduino/FlyBowlController.git
+[submodule "hardware/backlight_controller_5x3"]
+	path = hardware/backlight_controller_5x3
+	url = https://github.com/janelia-kicad/backlight_controller_5x3.git
+[submodule "hardware/fly_bowl_wiring"]
+	path = hardware/fly_bowl_wiring
+	url = https://github.com/janelia-kicad/fly_bowl_wiring.git
