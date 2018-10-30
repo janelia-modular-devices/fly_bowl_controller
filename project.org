@@ -95,19 +95,25 @@
      ans =
      'COM1'
      'COM4'
-     serial_port = 'COM4'             % example Windows serial port
-     dev = ModularClient(serial_port) % creates a device object
-     dev.open()                       % opens a serial connection to the device
+     serial_port = 'COM4';             % example Windows serial port
+     dev = ModularClient(serial_port); % creates a device object
+     dev.open();                       % opens a serial connection to the device
      dev.getDeviceId()
      ans =
      name: 'fly_bowl_controller'
      form_factor: '5x3'
      serial_number: 0
      dev.setPropertiesToDefaults({'ALL'});
-     dev.setIrBacklightsOnAtPower(90)
-     dev.setVisibleBacklightsOnAtPower(68)
+     dev.flyBowlsEnabled('getValue')
+     [1]    [1]    [1]    [1]
+     dev.flyBowlsEnabled('setValue',{true,false,true,false})
+     [1]    [0]    [1]    [0]
+     dev.setIrBacklightsOnAtPower(90);
+     dev.setVisibleBacklightsOnAtPower(68);
      dev.setVisibleBacklightsOff();
      dev.setIrBacklightsOff();
+     dev.close();
+     clear dev;
    #+END_SRC
 
 * Build Instructions
