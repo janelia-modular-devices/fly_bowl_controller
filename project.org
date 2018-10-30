@@ -16,28 +16,72 @@
 
 ** Arduino Serial Monitor
 
-  #+BEGIN_SRC sh
-    getDeviceId
-    setPropertiesToDefaults [ALL]
-    setAllIrBacklightsOnAtPower 90
-    setAllVisibleBacklightsOnAtPower 68
-    setAllVisibleBacklightsOff
-    setAllIrBacklightsOff
-  #+END_SRC
+   #+BEGIN_SRC json
+     getDeviceId
+     {
+       "id": "getDeviceId",
+       "result": {
+         "name": "fly_bowl_controller",
+         "form_factor": "5x3",
+         "serial_number": 0
+       }
+     }
+     setPropertiesToDefaults [ALL]
+     {
+       "id": "setPropertiesToDefaults",
+       "result": null
+     }
+     flyBowlsEnabled getValue
+     {
+       "id": "flyBowlsEnabled",
+       "result": [
+         true,
+         true,
+         true,
+         true
+       ]
+     }
+     flyBowlsEnabled setValue [true,false,true,false]
+     {
+       "id": "flyBowlsEnabled",
+       "result": [
+         true,
+         false,
+         true,
+         false
+       ]
+     }
+     setIrBacklightsOnAtPower 90
+     {
+       "id": "setIrBacklightsOnAtPower",
+       "result": null
+     }
+     setVisibleBacklightsOnAtPower 68
+     setVisibleBacklightsOff
+     setIrBacklightsOff
+     {
+       "id": "setIrBacklightsOff",
+       "result": null
+     }
+   #+END_SRC
 
 ** Python
 
-  #+BEGIN_SRC python
-    from modular_client import ModularClient
-    dev = ModularClient() # Automatically finds device if one available
-    dev.get_device_id()
-    {'name': 'fly_bowl_controller', 'form_factor': '5x3', 'serial_number': 0}
-    dev.set_properties_to_defaults(['ALL'])
-    dev.set_all_ir_backlights_on_at_power(90) # Automatically turns fans on too
-    dev.set_all_visible_backlights_on_at_power(68)
-    dev.set_all_visible_backlights_off()
-    dev.set_all_ir_backlights_off() # Automatically turns fans off too
-  #+END_SRC
+   #+BEGIN_SRC python
+     from modular_client import ModularClient
+     dev = ModularClient() # Automatically finds device if one available
+     dev.get_device_id()
+     {'name': 'fly_bowl_controller', 'form_factor': '5x3', 'serial_number': 0}
+     dev.set_properties_to_defaults(['ALL'])
+     dev.fly_bowls_enabled('getValue')
+     [True, True, True, True]
+     dev.fly_bowls_enabled('setValue',[True,False,True,False])
+     [True, False, True, False]
+     dev.set_ir_backlights_on_at_power(90) # Automatically turns fans on too
+     dev.set_visible_backlights_on_at_power(68)
+     dev.set_visible_backlights_off()
+     dev.set_ir_backlights_off() # Automatically turns fans off too
+   #+END_SRC
 
 ** Matlab
 
@@ -60,10 +104,10 @@
      form_factor: '5x3'
      serial_number: 0
      dev.setPropertiesToDefaults({'ALL'});
-     dev.setAllIrBacklightsOnAtPower(90)
-     dev.setAllVisibleBacklightsOnAtPower(68)
-     dev.setAllVisibleBacklightsOff();
-     dev.setAllIrBacklightsOff();
+     dev.setIrBacklightsOnAtPower(90)
+     dev.setVisibleBacklightsOnAtPower(68)
+     dev.setVisibleBacklightsOff();
+     dev.setIrBacklightsOff();
    #+END_SRC
 
 * Build Instructions
