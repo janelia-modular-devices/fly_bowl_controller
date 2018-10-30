@@ -7,3 +7,6 @@
 [submodule "hardware/fly_bowl_wiring"]
 	path = hardware/fly_bowl_wiring
 	url = https://github.com/janelia-kicad/fly_bowl_wiring.git
+[submodule "generate_modular_device_documentation"]
+	path = generate_modular_device_documentation
+	url = https://github.com/janelia-modular-devices/generate_modular_device_documentation.git
