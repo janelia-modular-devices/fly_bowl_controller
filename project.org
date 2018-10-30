@@ -14,5 +14,56 @@
 
 * Usage Instructions
 
+** Arduino Serial Monitor
+
+  #+BEGIN_SRC sh
+    getDeviceId
+    setPropertiesToDefaults [ALL]
+    setAllIrBacklightsOnAtPower 90
+    setAllVisibleBacklightsOnAtPower 68
+    setAllVisibleBacklightsOff
+    setAllIrBacklightsOff
+  #+END_SRC
+
+** Python
+
+  #+BEGIN_SRC python
+    from modular_client import ModularClient
+    dev = ModularClient() # Automatically finds device if one available
+    dev.get_device_id()
+    {'name': 'fly_bowl_controller', 'form_factor': '5x3', 'serial_number': 0}
+    dev.set_properties_to_defaults(['ALL'])
+    dev.set_all_ir_backlights_on_at_power(90) # Automatically turns fans on too
+    dev.set_all_visible_backlights_on_at_power(68)
+    dev.set_all_visible_backlights_off()
+    dev.set_all_ir_backlights_off() # Automatically turns fans off too
+  #+END_SRC
+
+** Matlab
+
+   #+BEGIN_SRC matlab
+     % Linux and Mac OS X
+     ls /dev/tty*
+     serial_port = '/dev/ttyACM0'     % example Linux serial port
+     serial_port = '/dev/tty.usbmodem262471' % example Mac OS X serial port
+                                             % Windows
+     getAvailableComPorts()
+     ans =
+     'COM1'
+     'COM4'
+     serial_port = 'COM4'             % example Windows serial port
+     dev = ModularClient(serial_port) % creates a device object
+     dev.open()                       % opens a serial connection to the device
+     dev.getDeviceId()
+     ans =
+     name: 'fly_bowl_controller'
+     form_factor: '5x3'
+     serial_number: 0
+     dev.setPropertiesToDefaults({'ALL'});
+     dev.setAllIrBacklightsOnAtPower(90)
+     dev.setAllVisibleBacklightsOnAtPower(68)
+     dev.setAllVisibleBacklightsOff();
+     dev.setAllIrBacklightsOff();
+   #+END_SRC
 
 * Build Instructions
