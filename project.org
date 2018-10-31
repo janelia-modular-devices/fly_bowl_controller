@@ -66,6 +66,34 @@
        "id": "setVisibleBacklightsOff",
        "result": null
      }
+     addVisibleBacklightsPwm ?
+       {
+         "id": "addVisibleBacklightsPwm",
+         "result": {
+           "name": "addVisibleBacklightsPwm",
+           "firmware": "FlyBowlController",
+           "parameters": [
+             "power",
+             "pulse_delay",
+             "pulse_period",
+             "pulse_on_duration",
+             "pulse_count"
+           ],
+           "result_info": {
+             "type": "long"
+           }
+         }
+       }
+     addVisibleBacklightsPwm 100 5000 100 50 1000
+     {
+       "id": "addVisibleBacklightsPwm",
+       "result": 0
+     }
+     stopPwm 0
+     {
+       "id": "stopPwm",
+       "result": null
+     }
      setIrBacklightsOff
      {
        "id": "setIrBacklightsOff",
@@ -88,7 +116,24 @@
      dev.set_ir_backlights_on_at_power(90) # Automatically turns fans on too
      dev.set_visible_backlights_on_at_power(68)
      dev.set_visible_backlights_off()
-     dev.set_ir_backlights_off() # Automatically turns fans off too
+     dev.add_visible_backlights_pwm('?')
+     {'name': 'addVisibleBacklightsPwm',
+      'firmware': 'FlyBowlController',
+      'parameters': ['power',
+                     'pulse_delay',
+                     'pulse_period',
+                     'pulse_on_duration',
+                     'pulse_count'],
+      'result_info': {'type': 'long'}}
+
+         power = 100 # 100%
+         delay = 5000 # 5000ms
+         period = 100 # 100ms
+         on_duration = 50 # 50ms
+         count = 1000
+         pwm_index = dev.add_visible_backlights_pwm(power,delay,period,on_duration,count)
+         dev.stop_pwm(pwm_index)
+         dev.set_ir_backlights_off() # Automatically turns fans off too
    #+END_SRC
 
 ** Matlab
@@ -119,6 +164,13 @@
      dev.setIrBacklightsOnAtPower(90);
      dev.setVisibleBacklightsOnAtPower(68);
      dev.setVisibleBacklightsOff();
+     power = 100; % 100%
+     delay = 5000; % 5000ms
+     period = 100; % 100ms
+     on_duration = 50; % 50ms
+     count = 1000;
+     pwm_index = dev.addVisibleBacklightsPwm(power,delay,period,on_duration,count);
+     dev.stopPwm(pwm_index);
      dev.setIrBacklightsOff();
      dev.close();
      clear dev;
