@@ -94,6 +94,108 @@
        "id": "stopPwm",
        "result": null
      }
+     experimentDelay setValue 10.0
+     {
+       "id": "experimentDelay",
+       "result": 10.000000
+     }
+     removeAllExperimentSteps
+     {
+       "id": "removeAllExperimentSteps",
+       "result": null
+     }
+     addExperimentStep ?
+       {
+         "id": "addExperimentStep",
+         "result": {
+           "name": "addExperimentStep",
+           "firmware": "FlyBowlController",
+           "parameters": [
+             "power",
+             "pulse_period",
+             "pulse_on_duration",
+             "pulse_count",
+             "sequence_off_duration",
+             "sequence_count",
+             "step_duration"
+           ],
+           "result_info": {
+             "type": "long"
+           }
+         }
+       }
+     addExperimentStep 90 100 50 25 2500 4 30.0
+     {
+       "id": "addExperimentStep",
+       "result": 0
+     }
+     addExperimentStep 75 100 50 35 2500 4 20.0
+     {
+       "id": "addExperimentStep",
+       "result": 1
+     }
+     getExperimentSteps
+     {
+       "id": "getExperimentSteps",
+       "result": [
+         {
+           "power": 90,
+           "pulse_period": 100,
+           "pulse_on_duration": 50,
+           "pulse_count": 25,
+           "sequence_off_duration": 2500,
+           "sequence_count": 4,
+           "step_duration": 30.000000
+         },
+         {
+           "power": 75,
+           "pulse_period": 100,
+           "pulse_on_duration": 50,
+           "pulse_count": 35,
+           "sequence_off_duration": 2500,
+           "sequence_count": 4,
+           "step_duration": 20.000000
+         }
+       ]
+     }
+     getExperimentStatus
+     {
+       "id": "getExperimentStatus",
+       "result": {
+         "state": "EXPERIMENT_NOT_RUNNING",
+         "experiment_step_index": 0,
+         "experiment_step_count": 2,
+         "sequence_index": 0,
+         "sequence_count": 0
+       }
+     }
+     runExperiment
+     {
+       "id": "runExperiment",
+       "result": null
+     }
+     getExperimentStatus
+     {
+       "id": "getExperimentStatus",
+       "result": {
+         "state": "DELAYING_BEFORE_STARTING_EXPERIMENT",
+         "experiment_step_index": 0,
+         "experiment_step_count": 2,
+         "sequence_index": 0,
+         "sequence_count": 0
+       }
+     }
+     getExperimentStatus
+     {
+       "id": "getExperimentStatus",
+       "result": {
+         "state": "EXPERIMENT_RUNNING",
+         "experiment_step_index": 0,
+         "experiment_step_count": 2,
+         "sequence_index": 2,
+         "sequence_count": 4
+       }
+     }
      setIrBacklightsOff
      {
        "id": "setIrBacklightsOff",
@@ -125,15 +227,65 @@
                      'pulse_on_duration',
                      'pulse_count'],
       'result_info': {'type': 'long'}}
-
-         power = 100 # 100%
-         delay = 5000 # 5000ms
-         period = 100 # 100ms
-         on_duration = 50 # 50ms
-         count = 1000
-         pwm_index = dev.add_visible_backlights_pwm(power,delay,period,on_duration,count)
-         dev.stop_pwm(pwm_index)
-         dev.set_ir_backlights_off() # Automatically turns fans off too
+     power = 100 # 100%
+     pulse_delay = 1000 # 1000ms
+     pulse_period = 100 # 100ms
+     pulse_on_duration = 50 # 50ms
+     pulse_count = 1000
+     pwm_index = dev.add_visible_backlights_pwm(power,pulse_delay,pulse_period,pulse_on_duration,pulse_count)
+     dev.stop_pwm(pwm_index)
+     dev.experiment_delay('setValue',10.0) # 10.0s
+     10.0
+     dev.remove_all_experiment_steps()
+     power = 90 # 90%
+     pulse_period = 100 # 100ms
+     pulse_on_duration = 50 # 50ms
+     pulse_count = 25
+     sequence_off_duration = 2500 # 2500ms
+     sequence_count = 4
+     step_duration = 30.0 # 30.0s
+     dev.add_experiment_step(power,pulse_period,pulse_on_duration,pulse_count,sequence_off_duration,sequence_count,step_duration)
+     0
+     power = 70 # 70%
+     pulse_count = 35
+     step_duration = 20.0 # 20.0s
+     dev.add_experiment_step(power,pulse_period,pulse_on_duration,pulse_count,sequence_off_duration,sequence_count,step_duration)
+     1
+     dev.get_experiment_steps()
+     [{'power': 90,
+       'pulse_period': 100,
+       'pulse_on_duration': 50,
+       'pulse_count': 25,
+       'sequence_off_duration': 2500,
+       'sequence_count': 4,
+       'step_duration': 30.0},
+      {'power': 70,
+       'pulse_period': 100,
+       'pulse_on_duration': 50,
+       'pulse_count': 35,
+       'sequence_off_duration': 2500,
+       'sequence_count': 4,
+       'step_duration': 20.0}]
+     dev.get_experiment_status()
+     {'state': 'EXPERIMENT_NOT_RUNNING',
+      'experiment_step_index': 0,
+      'experiment_step_count': 2,
+      'sequence_index': 0,
+      'sequence_count': 0}
+     dev.run_experiment()
+     dev.get_experiment_status()
+     {'state': 'DELAYING_BEFORE_STARTING_EXPERIMENT',
+      'experiment_step_index': 0,
+      'experiment_step_count': 2,
+      'sequence_index': 0,
+      'sequence_count': 0}
+     dev.get_experiment_status()
+     {'state': 'EXPERIMENT_RUNNING',
+      'experiment_step_index': 0,
+      'experiment_step_count': 2,
+      'sequence_index': 3,
+      'sequence_count': 4}
+     dev.set_ir_backlights_off() # Automatically turns fans off too
    #+END_SRC
 
 ** Matlab
@@ -165,7 +317,7 @@
      dev.setVisibleBacklightsOnAtPower(68);
      dev.setVisibleBacklightsOff();
      power = 100; % 100%
-     delay = 5000; % 5000ms
+     delay = 1000; % 1000ms
      period = 100; % 100ms
      on_duration = 50; % 50ms
      count = 1000;
