@@ -1,4 +1,4 @@
-# Created 2018-11-02 Fri 11:30
+# Created 2018-11-02 Fri 11:42
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
@@ -260,6 +260,7 @@ with the backlight cooling fans and indicator lights.
   # [True, True, True, True]
   dev.fly_bowls_enabled('setValue',[True,False,True,False])
   # [True, False, True, False]
+  dev.set_ir_backlights_on_at_power(90) # 90 percent. Automatically turns fans on too
   dev.remove_all_experiment_steps()
   power = 90 # 90 percent
   pulse_period = 100 # 100 ms
@@ -315,7 +316,6 @@ with the backlight cooling fans and indicator lights.
   #  'experiment_step_count': 2,
   #  'sequence_index': 0,
   #  'sequence_count': 0}
-  dev.set_ir_backlights_on_at_power(90) # 90 percent. Automatically turns fans on too
   dev.set_visible_backlights_on_at_power(68) # 68 percent
   dev.set_visible_backlights_off()
   dev.add_visible_backlights_pwm('?')
@@ -363,6 +363,7 @@ with the backlight cooling fans and indicator lights.
   % [1]    [1]    [1]    [1]
   dev.flyBowlsEnabled('setValue',{true,false,true,false})
   % [1]    [0]    [1]    [0]
+  dev.setIrBacklightsOnAtPower(90); % 90 percent. Automatically turns on fans too
   dev.removeAllExperimentSteps();
   power = 90; % 90 percent
   pulse_period = 100; % 100 ms
@@ -420,7 +421,6 @@ with the backlight cooling fans and indicator lights.
   % experiment_step_count: 2
   %        sequence_index: 0
   %        sequence_count: 0
-  dev.setIrBacklightsOnAtPower(90); % 90 percent. Automatically turns on fans too
   dev.setVisibleBacklightsOnAtPower(68); % 68 percent
   dev.setVisibleBacklightsOff();
   power = 100; % 100 percent
