@@ -1,4 +1,4 @@
-# Created 2018-11-02 Fri 11:42
+# Created 2018-11-02 Fri 11:48
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
@@ -270,13 +270,27 @@ with the backlight cooling fans and indicator lights.
   sequence_count = 4
   step_delay = 4.0 # 4.0 s
   step_duration = 30.0 # 30.0 s
-  dev.add_experiment_step(power,pulse_period,pulse_on_duration,pulse_count,sequence_off_duration,sequence_count,step_delay,step_duration)
+  dev.add_experiment_step(power,
+                          pulse_period,
+                          pulse_on_duration,
+                          pulse_count,
+                          sequence_off_duration,
+                          sequence_count,
+                          step_delay,
+                          step_duration)
   # 0
   power = 75 # 75 percent
   pulse_count = 35
   step_delay = 0.0 # 0.0 s
   step_duration = 20.0 # 20.0 s
-  dev.add_experiment_step(power,pulse_period,pulse_on_duration,pulse_count,sequence_off_duration,sequence_count,step_delay,step_duration)
+  dev.add_experiment_step(power,
+                          pulse_period,
+                          pulse_on_duration,
+                          pulse_count,
+                          sequence_off_duration,
+                          sequence_count,
+                          step_delay,
+                          step_duration)
   # 1
   dev.get_experiment_steps()
   # [{'power': 90,
@@ -332,7 +346,11 @@ with the backlight cooling fans and indicator lights.
   pulse_period = 100 # 100 ms
   pulse_on_duration = 50 # 50 ms
   pulse_count = 1000
-  pwm_index = dev.add_visible_backlights_pwm(power,pulse_delay,pulse_period,pulse_on_duration,pulse_count)
+  pwm_index = dev.add_visible_backlights_pwm(power,
+                                             pulse_delay,
+                                             pulse_period,
+                                             pulse_on_duration,
+                                             pulse_count)
   dev.stop_pwm(pwm_index)
   dev.set_ir_backlights_off() # Automatically turns fans off too
 #+END_SRC
@@ -373,13 +391,27 @@ with the backlight cooling fans and indicator lights.
   sequence_count = 4;
   step_delay = 4.0; % 4.0 s
   step_duration = 30.0; % 30.0 s
-  dev.addExperimentStep(power,pulse_period,pulse_on_duration,pulse_count,sequence_off_duration,sequence_count,step_delay,step_duration)
+  dev.addExperimentStep(power, ...
+                        pulse_period, ...
+                        pulse_on_duration, ...
+                        pulse_count, ...
+                        sequence_off_duration, ...
+                        sequence_count, ...
+                        step_delay, ...
+                        step_duration)
   % 0
   power = 75; % 75 percent
   pulse_count = 35;
   step_delay = 0.0; % 0.0 s
   step_duration = 20.0; % 20.0 s
-  dev.addExperimentStep(power,pulse_period,pulse_on_duration,pulse_count,sequence_off_duration,sequence_count,step_delay,step_duration)
+  dev.addExperimentStep(power, ...
+                        pulse_period, ...
+                        pulse_on_duration, ...
+                        pulse_count, ...
+                        sequence_off_duration, ...
+                        sequence_count, ...
+                        step_delay, ...
+                        step_duration)
   % 1
   experiment_steps = dev.getExperimentSteps();
   experiment_steps{1}
@@ -428,7 +460,11 @@ with the backlight cooling fans and indicator lights.
   pulse_period = 100; % 100 ms
   pulse_on_duration = 50; % 50 ms
   pulse_count = 1000;
-  pwm_index = dev.addVisibleBacklightsPwm(power,pulse_delay,pulse_period,pulse_on_duration,pulse_count);
+  pwm_index = dev.addVisibleBacklightsPwm(power, ...
+                                          pulse_delay, ...
+                                          pulse_period, ...
+                                          pulse_on_duration, ...
+                                          pulse_count);
   dev.stopPwm(pwm_index);
   dev.setIrBacklightsOff();
   dev.close();
