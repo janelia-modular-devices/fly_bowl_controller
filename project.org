@@ -135,7 +135,7 @@
      #   "id": "getExperimentSteps",
      #   "result": [
      #     {
-     #       "power": 90,
+     #       "power": 90.000000,
      #       "pulse_period": 100,
      #       "pulse_on_duration": 50,
      #       "pulse_count": 25,
@@ -145,7 +145,7 @@
      #       "step_duration": 30.000000
      #     },
      #     {
-     #       "power": 75,
+     #       "power": 75.000000,
      #       "pulse_period": 100,
      #       "pulse_on_duration": 50,
      #       "pulse_count": 35,
@@ -284,7 +284,7 @@
                              step_duration)
      # 1
      dev.get_experiment_steps()
-     # [{'power': 90,
+     # [{'power': 90.0,
      #   'pulse_period': 100,
      #   'pulse_on_duration': 50,
      #   'pulse_count': 25,
@@ -292,7 +292,7 @@
      #   'sequence_count': 4,
      #   'step_delay': 4.0,
      #   'step_duration': 30.0},
-     #  {'power': 75,
+     #  {'power': 75.0,
      #   'pulse_period': 100,
      #   'pulse_on_duration': 50,
      #   'pulse_count': 35,
