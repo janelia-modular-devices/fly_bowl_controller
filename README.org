@@ -1,4 +1,4 @@
-# Created 2018-11-02 Fri 11:48
+# Created 2018-11-08 Thu 17:56
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
@@ -23,7 +23,8 @@ with the backlight cooling fans and indicator lights.
 
 * Usage Instructions
 
-** Arduino Serial Monitor
+** Example Code
+*** Arduino Serial Monitor
 
 #+BEGIN_SRC sh
   ?
@@ -98,7 +99,7 @@ with the backlight cooling fans and indicator lights.
   #     false
   #   ]
   # }
-  setIrBacklightsOnAtPower 90
+  setIrBacklightsOnAtPower 25
   # {
   #   "id": "setIrBacklightsOnAtPower",
   #   "result": null
@@ -129,12 +130,12 @@ with the backlight cooling fans and indicator lights.
   #     }
   #   }
   # }
-  addExperimentStep 90 100 50 25 2500 4 4.0 30.0
+  addExperimentStep 25 100 50 5 750 4 1.0 6.0
   # {
   #   "id": "addExperimentStep",
   #   "result": 0
   # }
-  addExperimentStep 75 100 50 35 2500 4 0.0 20.0
+  addExperimentStep 40 100 50 35 2500 4 0.0 20.0
   # {
   #   "id": "addExperimentStep",
   #   "result": 1
@@ -144,17 +145,17 @@ with the backlight cooling fans and indicator lights.
   #   "id": "getExperimentSteps",
   #   "result": [
   #     {
-  #       "power": 90,
+  #       "power": 25.000000,
   #       "pulse_period": 100,
   #       "pulse_on_duration": 50,
-  #       "pulse_count": 25,
-  #       "sequence_off_duration": 2500,
+  #       "pulse_count": 5,
+  #       "sequence_off_duration": 750,
   #       "sequence_count": 4,
-  #       "step_delay": 4.000000,
-  #       "step_duration": 30.000000
+  #       "step_delay": 1.000000,
+  #       "step_duration": 6.000000
   #     },
   #     {
-  #       "power": 75,
+  #       "power": 40.000000,
   #       "pulse_period": 100,
   #       "pulse_on_duration": 50,
   #       "pulse_count": 35,
@@ -248,7 +249,7 @@ with the backlight cooling fans and indicator lights.
   # }
 #+END_SRC
 
-** Python
+*** Python
 
 #+BEGIN_SRC python
   from modular_client import ModularClient
@@ -260,16 +261,16 @@ with the backlight cooling fans and indicator lights.
   # [True, True, True, True]
   dev.fly_bowls_enabled('setValue',[True,False,True,False])
   # [True, False, True, False]
-  dev.set_ir_backlights_on_at_power(90) # 90 percent. Automatically turns fans on too
+  dev.set_ir_backlights_on_at_power(25) # 25 percent. Automatically turns fans on too
   dev.remove_all_experiment_steps()
-  power = 90 # 90 percent
+  power = 25 # 25 percent
   pulse_period = 100 # 100 ms
   pulse_on_duration = 50 # 50 ms
-  pulse_count = 25
-  sequence_off_duration = 2500 # 2500 ms
+  pulse_count = 5
+  sequence_off_duration = 750 # 750 ms
   sequence_count = 4
-  step_delay = 4.0 # 4.0 s
-  step_duration = 30.0 # 30.0 s
+  step_delay = 1.0 # 1.0 s
+  step_duration = 6.0 # 6.0 s
   dev.add_experiment_step(power,
                           pulse_period,
                           pulse_on_duration,
@@ -279,8 +280,12 @@ with the backlight cooling fans and indicator lights.
                           step_delay,
                           step_duration)
   # 0
-  power = 75 # 75 percent
+  power = 40 # 40 percent
+  pulse_period = 100 # 100 ms
+  pulse_on_duration = 50 # 50 ms
   pulse_count = 35
+  sequence_off_duration = 2500 # 2500 ms
+  sequence_count = 4
   step_delay = 0.0 # 0.0 s
   step_duration = 20.0 # 20.0 s
   dev.add_experiment_step(power,
@@ -293,15 +298,15 @@ with the backlight cooling fans and indicator lights.
                           step_duration)
   # 1
   dev.get_experiment_steps()
-  # [{'power': 90,
+  # [{'power': 25.0,
   #   'pulse_period': 100,
   #   'pulse_on_duration': 50,
-  #   'pulse_count': 25,
-  #   'sequence_off_duration': 2500,
+  #   'pulse_count': 5,
+  #   'sequence_off_duration': 750,
   #   'sequence_count': 4,
-  #   'step_delay': 4.0,
-  #   'step_duration': 30.0},
-  #  {'power': 75,
+  #   'step_delay': 1.0,
+  #   'step_duration': 6.0},
+  #  {'power': 40.0,
   #   'pulse_period': 100,
   #   'pulse_on_duration': 50,
   #   'pulse_count': 35,
@@ -355,7 +360,7 @@ with the backlight cooling fans and indicator lights.
   dev.set_ir_backlights_off() # Automatically turns fans off too
 #+END_SRC
 
-** Matlab
+*** Matlab
 
 #+BEGIN_SRC matlab
   % Linux and Mac OS X
@@ -381,16 +386,16 @@ with the backlight cooling fans and indicator lights.
   % [1]    [1]    [1]    [1]
   dev.flyBowlsEnabled('setValue',{true,false,true,false})
   % [1]    [0]    [1]    [0]
-  dev.setIrBacklightsOnAtPower(90); % 90 percent. Automatically turns on fans too
+  dev.setIrBacklightsOnAtPower(25); % 25 percent. Automatically turns on fans too
   dev.removeAllExperimentSteps();
-  power = 90; % 90 percent
+  power = 25; % 25 percent
   pulse_period = 100; % 100 ms
   pulse_on_duration = 50; % 50 ms
-  pulse_count = 25;
-  sequence_off_duration = 2500; % 2500 ms
+  pulse_count = 5;
+  sequence_off_duration = 750; % 750 ms
   sequence_count = 4;
-  step_delay = 4.0; % 4.0 s
-  step_duration = 30.0; % 30.0 s
+  step_delay = 1.0; % 1.0 s
+  step_duration = 6.0; % 6.0 s
   dev.addExperimentStep(power, ...
                         pulse_period, ...
                         pulse_on_duration, ...
@@ -400,8 +405,12 @@ with the backlight cooling fans and indicator lights.
                         step_delay, ...
                         step_duration)
   % 0
-  power = 75; % 75 percent
+  power = 40; % 40 percent
+  pulse_period = 100; % 100 ms
+  pulse_on_duration = 50; % 50 ms
   pulse_count = 35;
+  sequence_off_duration = 2500; % 2500 ms
+  sequence_count = 4;
   step_delay = 0.0; % 0.0 s
   step_duration = 20.0; % 20.0 s
   dev.addExperimentStep(power, ...
@@ -415,16 +424,16 @@ with the backlight cooling fans and indicator lights.
   % 1
   experiment_steps = dev.getExperimentSteps();
   experiment_steps{1}
-  %                 power: 90
+  %                 power: 25
   %          pulse_period: 100
   %     pulse_on_duration: 50
-  %           pulse_count: 25
-  % sequence_off_duration: 2500
+  %           pulse_count: 5
+  % sequence_off_duration: 750
   %        sequence_count: 4
-  %            step_delay: 4
-  %         step_duration: 30
+  %            step_delay: 1
+  %         step_duration: 6
   experiment_steps{2}
-  %                 power: 70
+  %                 power: 40
   %          pulse_period: 100
   %     pulse_on_duration: 50
   %           pulse_count: 35
@@ -471,6 +480,60 @@ with the backlight cooling fans and indicator lights.
   clear dev;
 #+END_SRC
 
+** Example Experiment Step Waveform
+
+Yellow waveform shows visible backlight.
+
+Blue waveform shows visible backlight indicator LED.
+
+*** Step Duration
+
+step_duration = 6.0 s
+
+[[file::./images/waveform/step_duration.png]]
+
+*** Step Delay
+
+step_delay = 1.0 s
+
+[[file::./images/waveform/step_delay.png]]
+
+*** Sequence Count
+
+sequence_count = 4
+
+[[file::./images/waveform/sequence_count.png]]
+
+*** Sequence Off Duration
+
+sequence_off_duration = 750 ms
+
+[[file::./images/waveform/sequence_off_duration.png]]
+
+*** Pulse Count
+
+pulse_count = 4
+
+[[file::./images/waveform/pulse_count.png]]
+
+*** Pulse On Duration
+
+pulse_on_duration = 50 ms
+
+[[file::./images/waveform/pulse_on_duration.png]]
+
+*** Pulse Period
+
+pulse_period = 100 ms
+
+[[file::./images/waveform/pulse_period.png]]
+
+*** Power
+
+Power = 25%
+
+[[file::./images/waveform/power.png]]
+
 * Build Instructions
 
 * Hardware
@@ -492,6 +555,10 @@ This board controls up to four Smart Vision backlights with IR and visible
 channels plus additional high and low power channel outputs.
 
 *** Images
+
+[[file:./images/backlight_controller_5x3/images/top.png]]
+
+[[file:./images/backlight_controller_5x3/images/bottom.png]]
 
 *** Schematic
 
@@ -603,7 +670,11 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
 
 **** Description
 
+Wiring schematics and documentation for the multiple fly bowl rig.
+
 *** Images
+
+[[file:./images/fly_bowl_wiring/images/top.png]]
 
 *** Schematic
 
@@ -625,7 +696,17 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
 
 **** PCB Parts
 
-|   |
+| Item | Reference(s)                                                | Quantity | PartNumber     | Vendor            | Description                         |
+|------+-------------------------------------------------------------+----------+----------------+-------------------+-------------------------------------|
+|    1 | BL1 BL2 BL3 BL4                                             |        4 | MOBL_150x150   | smartvisionlights | Maximum Operating Backlight 150x150 |
+|    2 | CABLE1 CABLE2                                               |        2 | 1195-7211-ND   | digikey           | CABLE ASSY DB09 SHLD BEIGE 2M       |
+|    3 | CABLE10 CABLE11 CABLE13 CABLE14 CABLE4 CABLE5 CABLE7 CABLE8 |        8 | 277-8345-ND    | digikey           | CBL FMALE RA TO MALE 5POS 1.5M      |
+|    4 | CABLE12 CABLE3 CABLE6 CABLE9                                |        4 | GC14333-ND     | digikey           | USB3.0-A-USB3.0-MICRO-B 3M GOLD     |
+|    5 | CAMERA1 CAMERA2 CAMERA3 CAMERA4                             |        4 | FL3-U3-13Y3M-C | flir              | 1280x1024 150 FPS Mono              |
+|    6 | F1 F2 F3 F4 F5 F6 F7 F8                                     |        8 | 381-2367-ND    | digikey           | FAN AXIAL 40X10MM 24VDC WIRE        |
+|    7 | J1                                                          |        1 | 277-2667-ND    | digikey           | CONN DSUB PLUG 9POS STR TERM BLK    |
+|    8 | J2                                                          |        1 | 277-2668-ND    | digikey           | CONN DSUB RCPT 9POS STR TERM BLK    |
+|    9 | L1 L2 L3 L4                                                 |        4 | 475-2864-2-ND  | digikey           | EMITTER IR 860NM 100MA SMD          |
 
 **** Supplemental Parts
 
@@ -650,6 +731,34 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
 
 **** Assembly Instructions
 
+***** Fly Bowl Numbering
+
+| Enclosure | Left | Right |
+|-----------+------+-------|
+| Back      |    0 |     1 |
+| Front     |    2 |     3 |
+
+***** Pinout
+
+| Fly Bowl | Description       | DB9 | Channel | Pin |
+|----------+-------------------+-----+---------+-----|
+|        0 | IR BACKLIGHT      |     |       8 |  20 |
+|        0 | VISIBLE BACKLIGHT |     |       9 |  21 |
+|        0 | FAN               |   2 |       0 |   2 |
+|        0 | LED               |   2 |       4 |  30 |
+|        1 | IR BACKLIGHT      |     |      10 |  22 |
+|        1 | VISIBLE BACKLIGHT |     |      11 |  23 |
+|        1 | FAN               |   4 |       1 |   5 |
+|        1 | LED               |   4 |       5 |  14 |
+|        2 | IR BACKLIGHT      |     |      12 |  35 |
+|        2 | VISIBLE BACKLIGHT |     |      13 |  36 |
+|        2 | FAN               |   6 |       2 |   6 |
+|        2 | LED               |   6 |       6 |  18 |
+|        3 | IR BACKLIGHT      |     |      14 |  37 |
+|        3 | VISIBLE BACKLIGHT |     |      15 |  38 |
+|        3 | FAN               |   8 |       3 |  29 |
+|        3 | LED               |   8 |       7 |  19 |
+
 * Firmware
 
 ** FlyBowlController
@@ -657,7 +766,7 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
 
 *** Library Information
 - Name :: FlyBowlController
-- Version :: 1.0.0
+- Version :: 2.0.1
 - License :: BSD
 - URL :: https://github.com/janelia-arduino/FlyBowlController
 - Author :: Peter Polidoro
@@ -692,17 +801,19 @@ Modular device fly bowl controller library.
         "pulse_count",
         "sequence_off_duration",
         "sequence_count",
+        "step_delay",
         "step_duration"
       ],
       "properties": [
-        "flyBowlsEnabled",
-        "experimentDelay"
+        "flyBowlsEnabled"
       ],
       "callbacks": [
         "setIrBacklightsOn",
         "setIrBacklightsOff",
+        "toggleIrBacklights",
         "setVisibleBacklightsOn",
         "setVisibleBacklightsOff",
+        "toggleVisibleBacklights",
         "removeAllExperimentSteps",
         "runExperiment",
         "stopExperiment"
