@@ -89,7 +89,7 @@
      #     false
      #   ]
      # }
-     setIrBacklightsOnAtPower 90
+     setIrBacklightsOnAtPower 25
      # {
      #   "id": "setIrBacklightsOnAtPower",
      #   "result": null
@@ -120,12 +120,12 @@
      #     }
      #   }
      # }
-     addExperimentStep 90 100 50 25 2500 4 4.0 30.0
+     addExperimentStep 25 100 50 25 2500 4 4.0 30.0
      # {
      #   "id": "addExperimentStep",
      #   "result": 0
      # }
-     addExperimentStep 75 100 50 35 2500 4 0.0 20.0
+     addExperimentStep 40 100 50 35 2500 4 0.0 20.0
      # {
      #   "id": "addExperimentStep",
      #   "result": 1
@@ -135,7 +135,7 @@
      #   "id": "getExperimentSteps",
      #   "result": [
      #     {
-     #       "power": 90.000000,
+     #       "power": 25.000000,
      #       "pulse_period": 100,
      #       "pulse_on_duration": 50,
      #       "pulse_count": 25,
@@ -145,7 +145,7 @@
      #       "step_duration": 30.000000
      #     },
      #     {
-     #       "power": 75.000000,
+     #       "power": 40.000000,
      #       "pulse_period": 100,
      #       "pulse_on_duration": 50,
      #       "pulse_count": 35,
@@ -251,9 +251,9 @@
      # [True, True, True, True]
      dev.fly_bowls_enabled('setValue',[True,False,True,False])
      # [True, False, True, False]
-     dev.set_ir_backlights_on_at_power(90) # 90 percent. Automatically turns fans on too
+     dev.set_ir_backlights_on_at_power(25) # 25 percent. Automatically turns fans on too
      dev.remove_all_experiment_steps()
-     power = 90 # 90 percent
+     power = 25 # 25 percent
      pulse_period = 100 # 100 ms
      pulse_on_duration = 50 # 50 ms
      pulse_count = 25
@@ -270,7 +270,7 @@
                              step_delay,
                              step_duration)
      # 0
-     power = 75 # 75 percent
+     power = 40 # 40 percent
      pulse_count = 35
      step_delay = 0.0 # 0.0 s
      step_duration = 20.0 # 20.0 s
@@ -284,7 +284,7 @@
                              step_duration)
      # 1
      dev.get_experiment_steps()
-     # [{'power': 90.0,
+     # [{'power': 25.0,
      #   'pulse_period': 100,
      #   'pulse_on_duration': 50,
      #   'pulse_count': 25,
@@ -292,7 +292,7 @@
      #   'sequence_count': 4,
      #   'step_delay': 4.0,
      #   'step_duration': 30.0},
-     #  {'power': 75.0,
+     #  {'power': 40.0,
      #   'pulse_period': 100,
      #   'pulse_on_duration': 50,
      #   'pulse_count': 35,
@@ -372,9 +372,9 @@
      % [1]    [1]    [1]    [1]
      dev.flyBowlsEnabled('setValue',{true,false,true,false})
      % [1]    [0]    [1]    [0]
-     dev.setIrBacklightsOnAtPower(90); % 90 percent. Automatically turns on fans too
+     dev.setIrBacklightsOnAtPower(25); % 25 percent. Automatically turns on fans too
      dev.removeAllExperimentSteps();
-     power = 90; % 90 percent
+     power = 25; % 25 percent
      pulse_period = 100; % 100 ms
      pulse_on_duration = 50; % 50 ms
      pulse_count = 25;
@@ -391,7 +391,7 @@
                            step_delay, ...
                            step_duration)
      % 0
-     power = 75; % 75 percent
+     power = 40; % 40 percent
      pulse_count = 35;
      step_delay = 0.0; % 0.0 s
      step_duration = 20.0; % 20.0 s
@@ -406,7 +406,7 @@
      % 1
      experiment_steps = dev.getExperimentSteps();
      experiment_steps{1}
-     %                 power: 90
+     %                 power: 25
      %          pulse_period: 100
      %     pulse_on_duration: 50
      %           pulse_count: 25
@@ -415,7 +415,7 @@
      %            step_delay: 4
      %         step_duration: 30
      experiment_steps{2}
-     %                 power: 70
+     %                 power: 40
      %          pulse_period: 100
      %     pulse_on_duration: 50
      %           pulse_count: 35
