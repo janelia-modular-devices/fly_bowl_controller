@@ -120,7 +120,7 @@
      #     }
      #   }
      # }
-     addExperimentStep 25 100 50 5 1000 4 1.5 4.25
+     addExperimentStep 25 100 50 5 750 4 1.0 6.0
      # {
      #   "id": "addExperimentStep",
      #   "result": 0
