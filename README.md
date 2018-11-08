@@ -1,50 +1,50 @@
-- [Repository Information](#org64af8e4)
-  - [Description](#orgf16692c)
-- [Images](#orgfc65d78)
-- [Usage Instructions](#org52de530)
-  - [Example Code](#orgd380a31)
-    - [Arduino Serial Monitor](#org954f875)
-    - [Python](#orgf518b66)
-    - [Matlab](#org57d3a06)
-  - [Example Experiment Step Waveform](#org22aa9a9)
-    - [Step Duration](#orgf8c6387)
-    - [Step Delay](#org08407b3)
-    - [Sequence Count](#orgaa8cbb7)
-    - [Sequence Off Duration](#org3fe6219)
-    - [Pulse Count](#org21d5a90)
-    - [Pulse On Duration](#org39acf08)
-    - [Pulse Period](#org9d37230)
-    - [Power](#org71945b9)
-- [Build Instructions](#orgd9f47b2)
-- [Hardware](#orgbe37181)
-  - [backlight\_controller\_5x3](#org0600e98)
-    - [Repository Information](#org172ea82)
-    - [Images](#orgcf79b51)
-    - [Schematic](#org2bd7d94)
-    - [Gerbers](#org5b39efd)
-    - [Bill of Materials](#orgfaf6e5b)
-    - [Supplemental Documentation](#orgddb88b9)
-  - [fly\_bowl\_wiring](#orgc39250c)
-    - [Repository Information](#orgcb13923)
-    - [Images](#org15c9944)
-    - [Schematic](#org890b55f)
-    - [Gerbers](#orgbc45cf8)
-    - [Bill of Materials](#orgd259a32)
-    - [Supplemental Documentation](#org69e12f6)
-- [Firmware](#org0f737eb)
-  - [FlyBowlController](#org6018010)
-    - [Library Information](#org4a3e49f)
-    - [API NAMES](#org4009253)
-    - [API GENERAL](#orgf978fa7)
-    - [Ancestors](#orgbef7836)
-    - [Clients](#orgc77a32f)
-    - [Devices](#orga3cf92b)
-    - [More Detailed Modular Device Information](#org9881f35)
-    - [Installation Instructions](#org0e87f02)
+- [Repository Information](#orgfec2b08)
+  - [Description](#orgdcb944c)
+- [Images](#orge67a725)
+- [Usage Instructions](#org74ceb60)
+  - [Example Code](#org9edeca6)
+    - [Arduino Serial Monitor](#org2513533)
+    - [Python](#orgdf9da97)
+    - [Matlab](#org9671b13)
+  - [Example Experiment Step Waveform](#orgda7bd8e)
+    - [Step Duration](#org3dc9916)
+    - [Step Delay](#org52f6b0e)
+    - [Sequence Count](#org45de8c8)
+    - [Sequence Off Duration](#org0ff50f6)
+    - [Pulse Count](#orge84865f)
+    - [Pulse On Duration](#orgfb724bf)
+    - [Pulse Period](#orgf29df94)
+    - [Power](#org0e65b79)
+- [Build Instructions](#org5ff5639)
+- [Hardware](#org6192303)
+  - [backlight\_controller\_5x3](#orgff406a3)
+    - [Repository Information](#orgdafe3b4)
+    - [Images](#org7076a16)
+    - [Schematic](#orgff01e7b)
+    - [Gerbers](#orgfe32da7)
+    - [Bill of Materials](#org8edbe31)
+    - [Supplemental Documentation](#orgefe57b2)
+  - [fly\_bowl\_wiring](#orgc4a5f19)
+    - [Repository Information](#orge3f9511)
+    - [Images](#org946763f)
+    - [Schematic](#orgb3244aa)
+    - [Gerbers](#org84c32db)
+    - [Bill of Materials](#org67a7d1c)
+    - [Supplemental Documentation](#org3381c54)
+- [Firmware](#orgc2fb25a)
+  - [FlyBowlController](#org7f15e9a)
+    - [Library Information](#org2936cf1)
+    - [API NAMES](#orgcc48659)
+    - [API GENERAL](#org8b7d7ff)
+    - [Ancestors](#org1d315a4)
+    - [Clients](#org4dfd60e)
+    - [Devices](#org1121b16)
+    - [More Detailed Modular Device Information](#org5277fc7)
+    - [Installation Instructions](#orgc3ebc78)
 
 
 
-<a id="org64af8e4"></a>
+<a id="orgfec2b08"></a>
 
 # Repository Information
 
@@ -56,31 +56,31 @@
 -   **Email:** peterpolidoro@gmail.com
 
 
-<a id="orgf16692c"></a>
+<a id="orgdcb944c"></a>
 
 ## Description
 
 This device controls the IR and visible backlights in the fly bowl rig along with the backlight cooling fans and indicator lights.
 
 
-<a id="orgfc65d78"></a>
+<a id="orge67a725"></a>
 
 # Images
 
 ![img](./images/front_top.png)
 
 
-<a id="org52de530"></a>
+<a id="org74ceb60"></a>
 
 # Usage Instructions
 
 
-<a id="orgd380a31"></a>
+<a id="org9edeca6"></a>
 
 ## Example Code
 
 
-<a id="org954f875"></a>
+<a id="org2513533"></a>
 
 ### Arduino Serial Monitor
 
@@ -308,7 +308,7 @@ setIrBacklightsOff
 ```
 
 
-<a id="orgf518b66"></a>
+<a id="orgdf9da97"></a>
 
 ### Python
 
@@ -422,7 +422,7 @@ dev.set_ir_backlights_off() # Automatically turns fans off too
 ```
 
 
-<a id="org57d3a06"></a>
+<a id="org9671b13"></a>
 
 ### Matlab
 
@@ -545,7 +545,7 @@ clear dev;
 ```
 
 
-<a id="org22aa9a9"></a>
+<a id="orgda7bd8e"></a>
 
 ## Example Experiment Step Waveform
 
@@ -554,94 +554,94 @@ Yellow waveform shows visible backlight.
 Blue waveform shows visible backlight indicator LED.
 
 
-<a id="orgf8c6387"></a>
+<a id="org3dc9916"></a>
 
 ### Step Duration
 
 step\_duration = 6.0 s
 
-![img](:./images/waveform/step_duration.png)
+![img](./images/waveform/step_duration.png)
 
 
-<a id="org08407b3"></a>
+<a id="org52f6b0e"></a>
 
 ### Step Delay
 
 step\_delay = 1.0 s
 
-![img](:./images/waveform/step_delay.png)
+![img](./images/waveform/step_delay.png)
 
 
-<a id="orgaa8cbb7"></a>
+<a id="org45de8c8"></a>
 
 ### Sequence Count
 
 sequence\_count = 4
 
-![img](:./images/waveform/sequence_count.png)
+![img](./images/waveform/sequence_count.png)
 
 
-<a id="org3fe6219"></a>
+<a id="org0ff50f6"></a>
 
 ### Sequence Off Duration
 
 sequence\_off\_duration = 750 ms
 
-![img](:./images/waveform/sequence_off_duration.png)
+![img](./images/waveform/sequence_off_duration.png)
 
 
-<a id="org21d5a90"></a>
+<a id="orge84865f"></a>
 
 ### Pulse Count
 
 pulse\_count = 4
 
-![img](:./images/waveform/pulse_count.png)
+![img](./images/waveform/pulse_count.png)
 
 
-<a id="org39acf08"></a>
+<a id="orgfb724bf"></a>
 
 ### Pulse On Duration
 
 pulse\_on\_duration = 50 ms
 
-![img](:./images/waveform/pulse_on_duration.png)
+![img](./images/waveform/pulse_on_duration.png)
 
 
-<a id="org9d37230"></a>
+<a id="orgf29df94"></a>
 
 ### Pulse Period
 
 pulse\_period = 100 ms
 
-![img](:./images/waveform/pulse_period.png)
+![img](./images/waveform/pulse_period.png)
 
 
-<a id="org71945b9"></a>
+<a id="org0e65b79"></a>
 
 ### Power
 
 Power = 25%
 
-![img](:./images/waveform/power.png)
+![img](./images/waveform/power.png)
 
 
-<a id="orgd9f47b2"></a>
+<a id="org5ff5639"></a>
 
 # Build Instructions
 
 
-<a id="orgbe37181"></a>
+<a id="org6192303"></a>
 
 # Hardware
 
 
-<a id="org0600e98"></a>
+<a id="orgff406a3"></a>
 
 ## backlight\_controller\_5x3
 
 
-<a id="org172ea82"></a>
+<a id="orgdafe3b4"></a>
 
 ### Repository Information
 
@@ -657,7 +657,7 @@ Power = 25%
     This board controls up to four Smart Vision backlights with IR and visible channels plus additional high and low power channel outputs.
 
 
-<a id="orgcf79b51"></a>
+<a id="org7076a16"></a>
 
 ### Images
 
@@ -666,7 +666,7 @@ Power = 25%
 ![img](./images/backlight_controller_5x3/images/bottom.png)
 
 
-<a id="org2bd7d94"></a>
+<a id="orgff01e7b"></a>
 
 ### Schematic
 
@@ -715,7 +715,7 @@ Power = 25%
 ![img](./images/backlight_controller_5x3/schematic/images/schematic20.png)
 
 
-<a id="org5b39efd"></a>
+<a id="orgfe32da7"></a>
 
 ### Gerbers
 
@@ -728,7 +728,7 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
 ![img](./images/backlight_controller_5x3/gerbers/images/gerbers01.png)
 
 
-<a id="orgfaf6e5b"></a>
+<a id="org8edbe31"></a>
 
 ### Bill of Materials
 
@@ -766,7 +766,7 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
     [./hardware/backlight\_controller\_5x3/bom/supplemental\_digikey\_parts.csv](./hardware/backlight_controller_5x3/bom/supplemental_digikey_parts.csv)
 
 
-<a id="orgddb88b9"></a>
+<a id="orgefe57b2"></a>
 
 ### Supplemental Documentation
 
@@ -775,12 +775,12 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
     -   Solder surface mount and through hole components onto the pcb.
 
 
-<a id="orgc39250c"></a>
+<a id="orgc4a5f19"></a>
 
 ## fly\_bowl\_wiring
 
 
-<a id="orgcb13923"></a>
+<a id="orge3f9511"></a>
 
 ### Repository Information
 
@@ -796,14 +796,14 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
     Wiring schematics and documentation for the multiple fly bowl rig.
 
 
-<a id="org15c9944"></a>
+<a id="org946763f"></a>
 
 ### Images
 
 ![img](./images/fly_bowl_wiring/images/top.png)
 
 
-<a id="org890b55f"></a>
+<a id="orgb3244aa"></a>
 
 ### Schematic
 
@@ -820,12 +820,12 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
 ![img](./images/fly_bowl_wiring/schematic/images/schematic04.png)
 
 
-<a id="orgbc45cf8"></a>
+<a id="org84c32db"></a>
 
 ### Gerbers
 
 
-<a id="orgd259a32"></a>
+<a id="org67a7d1c"></a>
 
 ### Bill of Materials
 
@@ -863,7 +863,7 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
     [./hardware/fly\_bowl\_wiring/bom/supplemental\_digikey\_parts.csv](./hardware/fly_bowl_wiring/bom/supplemental_digikey_parts.csv)
 
 
-<a id="org69e12f6"></a>
+<a id="org3381c54"></a>
 
 ### Supplemental Documentation
 
@@ -898,17 +898,17 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
         | 3        | LED               | 8   | 7       | 19  |
 
 
-<a id="org0f737eb"></a>
+<a id="orgc2fb25a"></a>
 
 # Firmware
 
 
-<a id="org6018010"></a>
+<a id="org7f15e9a"></a>
 
 ## FlyBowlController
 
 
-<a id="org4a3e49f"></a>
+<a id="org2936cf1"></a>
 
 ### Library Information
 
@@ -924,7 +924,7 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
     Modular device fly bowl controller library.
 
 
-<a id="org4009253"></a>
+<a id="orgcc48659"></a>
 
 ### API NAMES
 
@@ -973,14 +973,14 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
 ```
 
 
-<a id="orgf978fa7"></a>
+<a id="org8b7d7ff"></a>
 
 ### API GENERAL
 
 <./firmware/FlyBowlController/api/>
 
 
-<a id="orgbef7836"></a>
+<a id="org1d315a4"></a>
 
 ### Ancestors
 
@@ -993,12 +993,12 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
 <https://github.com/janelia-arduino/BacklightController>
 
 
-<a id="orgc77a32f"></a>
+<a id="org4dfd60e"></a>
 
 ### Clients
 
 
-<a id="orga3cf92b"></a>
+<a id="org1121b16"></a>
 
 ### Devices
 
@@ -1009,14 +1009,14 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
 <https://github.com/janelia-modular-devices/fly_bowl_controller>
 
 
-<a id="org9881f35"></a>
+<a id="org5277fc7"></a>
 
 ### More Detailed Modular Device Information
 
 <https://github.com/janelia-modular-devices/modular-devices>
 
 
-<a id="org0e87f02"></a>
+<a id="orgc3ebc78"></a>
 
 ### Installation Instructions
 

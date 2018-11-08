@@ -481,48 +481,48 @@
 
     step_duration = 6.0 s
 
-   [[file::./images/waveform/step_duration.png]]
+   [[file:./images/waveform/step_duration.png]]
 
 *** Step Delay
 
     step_delay = 1.0 s
 
-   [[file::./images/waveform/step_delay.png]]
+   [[file:./images/waveform/step_delay.png]]
 
 *** Sequence Count
 
     sequence_count = 4
 
-   [[file::./images/waveform/sequence_count.png]]
+   [[file:./images/waveform/sequence_count.png]]
 
 *** Sequence Off Duration
 
     sequence_off_duration = 750 ms
 
-   [[file::./images/waveform/sequence_off_duration.png]]
+   [[file:./images/waveform/sequence_off_duration.png]]
 
 *** Pulse Count
 
     pulse_count = 4
 
-   [[file::./images/waveform/pulse_count.png]]
+   [[file:./images/waveform/pulse_count.png]]
 
 *** Pulse On Duration
 
     pulse_on_duration = 50 ms
 
-   [[file::./images/waveform/pulse_on_duration.png]]
+   [[file:./images/waveform/pulse_on_duration.png]]
 
 *** Pulse Period
 
     pulse_period = 100 ms
 
-   [[file::./images/waveform/pulse_period.png]]
+   [[file:./images/waveform/pulse_period.png]]
 
 *** Power
 
     Power = 25%
 
-   [[file::./images/waveform/power.png]]
+   [[file:./images/waveform/power.png]]
 
 * Build Instructions
