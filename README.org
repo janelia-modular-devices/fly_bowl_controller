@@ -1,4 +1,4 @@
-# Created 2018-11-08 Thu 18:00
+# Created 2018-11-09 Fri 11:13
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
@@ -20,6 +20,10 @@ with the backlight cooling fans and indicator lights.
 * Images
 
 [[file:./images/front_top.png]]
+
+[[file:./images/top_bowls.png]]
+
+[[file:./images/wired.png]]
 
 * Usage Instructions
 
