@@ -503,7 +503,7 @@
 
 *** Pulse Count
 
-    pulse_count = 4
+    pulse_count = 5
 
    [[file:./images/waveform/pulse_count.png]]
 

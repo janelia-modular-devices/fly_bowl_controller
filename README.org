@@ -1,4 +1,4 @@
-# Created 2018-11-09 Fri 11:13
+# Created 2018-11-09 Fri 11:23
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
@@ -516,7 +516,7 @@ sequence_off_duration = 750 ms
 
 *** Pulse Count
 
-pulse_count = 4
+pulse_count = 5
 
 [[file:./images/waveform/pulse_count.png]]
 
