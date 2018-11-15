@@ -1,7 +1,7 @@
 * Header                                                           :noexport:
 
   #+MACRO: name fly_bowl_controller
-  #+MACRO: version 1.0
+  #+MACRO: version 2.0
   #+MACRO: license BSD, Open-Source Hardware
   #+MACRO: url https://github.com/janelia-modular-devices/fly_bowl_controller
   #+AUTHOR: Peter Polidoro
@@ -33,8 +33,8 @@
       #       ],
       #       "verbosity": "NAMES",
       #       "functions": [
-      #         "setIrBacklightsOnAtPower",
-      #         "setVisibleBacklightsOnAtPower",
+      #         "setIrBacklightsOnAtIntensity",
+      #         "setVisibleBacklightsOnAtIntensity",
       #         "addVisibleBacklightsPwm",
       #         "addExperimentStep",
       #         "getExperimentSteps",
@@ -90,9 +90,29 @@
       #     false
       #   ]
       # }
-      setIrBacklightsOnAtPower 25
+      irBacklightPowerToIntensityRatio setValue [5.99,5.59,5.41,5.57]
       # {
-      #   "id": "setIrBacklightsOnAtPower",
+      #   "id": "irBacklightPowerToIntensityRatio",
+      #   "result": [
+      #     5.990000,
+      #     5.590000,
+      #     5.410000,
+      #     5.570000
+      #   ]
+      # }
+      visibleBacklightPowerToIntensityRatio setValue [14.66,15.87,14.04,14.77]
+      # {
+      #   "id": "visibleBacklightPowerToIntensityRatio",
+      #   "result": [
+      #     14.660000,
+      #     15.870000,
+      #     14.040000,
+      #     14.770000
+      #   ]
+      # }
+      setIrBacklightsOnAtIntensity 4.5
+      # {
+      #   "id": "setIrBacklightsOnAtIntensity",
       #   "result": null
       # }
       removeAllExperimentSteps
@@ -107,7 +127,7 @@
       #     "name": "addExperimentStep",
       #     "firmware": "FlyBowlController",
       #     "parameters": [
-      #       "power",
+      #       "intensity",
       #       "pulse_period",
       #       "pulse_on_duration",
       #       "pulse_count",
@@ -121,12 +141,12 @@
       #     }
       #   }
       # }
-      addExperimentStep 25 100 50 5 750 4 1.0 6.0
+      addExperimentStep 1.71 100 50 5 750 4 1.0 6.0
       # {
       #   "id": "addExperimentStep",
       #   "result": 0
       # }
-      addExperimentStep 40 100 50 35 2500 4 0.0 20.0
+      addExperimentStep 2.7 100 50 35 2500 4 0.0 20.0
       # {
       #   "id": "addExperimentStep",
       #   "result": 1
@@ -136,7 +156,7 @@
       #   "id": "getExperimentSteps",
       #   "result": [
       #     {
-      #       "power": 25.000000,
+      #       "intensity": 1.710000,
       #       "pulse_period": 100,
       #       "pulse_on_duration": 50,
       #       "pulse_count": 5,
@@ -146,7 +166,7 @@
       #       "step_duration": 6.000000
       #     },
       #     {
-      #       "power": 40.000000,
+      #       "intensity": 2.700000,
       #       "pulse_period": 100,
       #       "pulse_on_duration": 50,
       #       "pulse_count": 35,
@@ -195,9 +215,9 @@
       #     "sequence_count": 0
       #   }
       # }
-      setVisibleBacklightsOnAtPower 68
+      setVisibleBacklightsOnAtIntensity 4.6
       # {
-      #   "id": "setVisibleBacklightsOnAtPower",
+      #   "id": "setVisibleBacklightsOnAtIntensity",
       #   "result": null
       # }
       setVisibleBacklightsOff
@@ -212,7 +232,7 @@
       #     "name": "addVisibleBacklightsPwm",
       #     "firmware": "FlyBowlController",
       #     "parameters": [
-      #       "power",
+      #       "intensity",
       #       "pulse_delay",
       #       "pulse_period",
       #       "pulse_on_duration",
@@ -223,7 +243,7 @@
       #     }
       #   }
       # }
-      addVisibleBacklightsPwm 100 5000 100 50 1000
+      addVisibleBacklightsPwm 6.0 5000 100 50 1000
       # {
       #   "id": "addVisibleBacklightsPwm",
       #   "result": 0
@@ -244,7 +264,7 @@
 
     #+BEGIN_SRC python
       from modular_client import ModularClient
-      dev = ModularClient() # Automatically finds device if one available
+      dev = ModularClient(timeout=0.1) # Automatically finds device if one available
       dev.get_device_id()
       # {'name': 'fly_bowl_controller', 'form_factor': '5x3', 'serial_number': 0}
       dev.set_properties_to_defaults(['ALL'])
@@ -252,9 +272,13 @@
       # [True, True, True, True]
       dev.fly_bowls_enabled('setValue',[True,False,True,False])
       # [True, False, True, False]
-      dev.set_ir_backlights_on_at_power(25) # 25 percent. Automatically turns fans on too
+      dev.ir_backlight_power_to_intensity_ratio('setValue',[5.99,5.59,5.41,5.57])
+      # [5.99, 5.59, 5.41, 5.57]
+      dev.visible_backlight_power_to_intensity_ratio('setValue',[14.66,15.87,14.04,14.77])
+      # [14.66, 15.87, 14.04, 14.77]
+      dev.set_ir_backlights_on_at_intensity(4.5) # 4.5 mW/mm^2. Automatically turns fans on too
       dev.remove_all_experiment_steps()
-      power = 25 # 25 percent
+      intensity = 1.71 # 1.71 mW/mm^2
       pulse_period = 100 # 100 ms
       pulse_on_duration = 50 # 50 ms
       pulse_count = 5
@@ -262,7 +286,7 @@
       sequence_count = 4
       step_delay = 1.0 # 1.0 s
       step_duration = 6.0 # 6.0 s
-      dev.add_experiment_step(power,
+      dev.add_experiment_step(intensity,
                               pulse_period,
                               pulse_on_duration,
                               pulse_count,
@@ -271,7 +295,7 @@
                               step_delay,
                               step_duration)
       # 0
-      power = 40 # 40 percent
+      intensity = 2.7 # 2.7 mW/mm^2
       pulse_period = 100 # 100 ms
       pulse_on_duration = 50 # 50 ms
       pulse_count = 35
@@ -279,7 +303,7 @@
       sequence_count = 4
       step_delay = 0.0 # 0.0 s
       step_duration = 20.0 # 20.0 s
-      dev.add_experiment_step(power,
+      dev.add_experiment_step(intensity,
                               pulse_period,
                               pulse_on_duration,
                               pulse_count,
@@ -289,7 +313,7 @@
                               step_duration)
       # 1
       dev.get_experiment_steps()
-      # [{'power': 25.0,
+      # [{'intensity': 1.71,
       #   'pulse_period': 100,
       #   'pulse_on_duration': 50,
       #   'pulse_count': 5,
@@ -297,7 +321,7 @@
       #   'sequence_count': 4,
       #   'step_delay': 1.0,
       #   'step_duration': 6.0},
-      #  {'power': 40.0,
+      #  {'intensity': 2.7,
       #   'pulse_period': 100,
       #   'pulse_on_duration': 50,
       #   'pulse_count': 35,
@@ -326,23 +350,23 @@
       #  'experiment_step_count': 2,
       #  'sequence_index': 0,
       #  'sequence_count': 0}
-      dev.set_visible_backlights_on_at_power(68) # 68 percent
+      dev.set_visible_backlights_on_at_intensity(4.6) # 4.6 mW/mm^2
       dev.set_visible_backlights_off()
       dev.add_visible_backlights_pwm('?')
       # {'name': 'addVisibleBacklightsPwm',
       #  'firmware': 'FlyBowlController',
-      #  'parameters': ['power',
+      #  'parameters': ['intensity',
       #                 'pulse_delay',
       #                 'pulse_period',
       #                 'pulse_on_duration',
       #                 'pulse_count'],
       #  'result_info': {'type': 'long'}}
-      power = 100 # 100 percent
+      intensity = 6.0 # 6.0 mW/mm^2
       pulse_delay = 1000 # 1000 ms
       pulse_period = 100 # 100 ms
       pulse_on_duration = 50 # 50 ms
       pulse_count = 1000
-      pwm_index = dev.add_visible_backlights_pwm(power,
+      pwm_index = dev.add_visible_backlights_pwm(intensity,
                                                  pulse_delay,
                                                  pulse_period,
                                                  pulse_on_duration,
@@ -377,9 +401,13 @@
       % [1]    [1]    [1]    [1]
       dev.flyBowlsEnabled('setValue',{true,false,true,false})
       % [1]    [0]    [1]    [0]
-      dev.setIrBacklightsOnAtPower(25); % 25 percent. Automatically turns on fans too
+      dev.irBacklightPowerToIntensityRatio('setValue',{5.99,5.59,5.41,5.57})
+      % [5.99]    [5.59]    [5.41]    [5.57]
+      dev.visibleBacklightPowerToIntensityRatio('setValue',{14.66,15.87,14.04,14.77})
+      % [14.66]    [15.87]    [14.04]    [14.77]
+      dev.setIrBacklightsOnAtIntensity(4.5); % 4.5 mW/mm^2. Automatically turns on fans too
       dev.removeAllExperimentSteps();
-      power = 25; % 25 percent
+      intensity = 1.71; % 1.71 mW/mm^2
       pulse_period = 100; % 100 ms
       pulse_on_duration = 50; % 50 ms
       pulse_count = 5;
@@ -387,7 +415,7 @@
       sequence_count = 4;
       step_delay = 1.0; % 1.0 s
       step_duration = 6.0; % 6.0 s
-      dev.addExperimentStep(power, ...
+      dev.addExperimentStep(intensity, ...
                             pulse_period, ...
                             pulse_on_duration, ...
                             pulse_count, ...
@@ -396,7 +424,7 @@
                             step_delay, ...
                             step_duration)
       % 0
-      power = 40; % 40 percent
+      intensity = 2.7; % 2.7 mW/mm^2
       pulse_period = 100; % 100 ms
       pulse_on_duration = 50; % 50 ms
       pulse_count = 35;
@@ -404,7 +432,7 @@
       sequence_count = 4;
       step_delay = 0.0; % 0.0 s
       step_duration = 20.0; % 20.0 s
-      dev.addExperimentStep(power, ...
+      dev.addExperimentStep(intensity, ...
                             pulse_period, ...
                             pulse_on_duration, ...
                             pulse_count, ...
@@ -415,7 +443,7 @@
       % 1
       experiment_steps = dev.getExperimentSteps();
       experiment_steps{1}
-      %                 power: 25
+      %             intensity: 1.71
       %          pulse_period: 100
       %     pulse_on_duration: 50
       %           pulse_count: 5
@@ -424,7 +452,7 @@
       %            step_delay: 1
       %         step_duration: 6
       experiment_steps{2}
-      %                 power: 40
+      %             intensity: 2.7
       %          pulse_period: 100
       %     pulse_on_duration: 50
       %           pulse_count: 35
@@ -453,14 +481,14 @@
       % experiment_step_count: 2
       %        sequence_index: 0
       %        sequence_count: 0
-      dev.setVisibleBacklightsOnAtPower(68); % 68 percent
+      dev.setVisibleBacklightsOnAtIntensity(4.6); % 4.6 mW/mm^2
       dev.setVisibleBacklightsOff();
-      power = 100; % 100 percent
+      intensity = 6.0; % 6.0 mW/mm^2
       pulse_delay = 1000; % 1000 ms
       pulse_period = 100; % 100 ms
       pulse_on_duration = 50; % 50 ms
       pulse_count = 1000;
-      pwm_index = dev.addVisibleBacklightsPwm(power, ...
+      pwm_index = dev.addVisibleBacklightsPwm(intensity, ...
                                               pulse_delay, ...
                                               pulse_period, ...
                                               pulse_on_duration, ...
@@ -519,10 +547,10 @@
 
    [[file:./images/waveform/pulse_period.png]]
 
-*** Power
+*** Intensity
 
-    Power = 25%
+    intensity = 1.71 mW/mm^2 (power = 25 %)
 
-   [[file:./images/waveform/power.png]]
+   [[file:./images/waveform/intensity.png]]
 
 * Build Instructions
