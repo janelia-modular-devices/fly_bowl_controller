@@ -1,4 +1,4 @@
-# Created 2018-11-15 Thu 13:42
+# Created 2018-11-15 Thu 13:46
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
 #+OPTIONS: title:nil author:nil email:nil toc:t |:t ^:nil
@@ -798,7 +798,7 @@ Wiring schematics and documentation for the multiple fly bowl rig.
 
 *** Library Information
 - Name :: FlyBowlController
-- Version :: 2.0.1
+- Version :: 3.0.0
 - License :: BSD
 - URL :: https://github.com/janelia-arduino/FlyBowlController
 - Author :: Peter Polidoro
@@ -811,47 +811,7 @@ Modular device fly bowl controller library.
 *** API NAMES
 
 #+BEGIN_SRC js
-  {
-    "id": "getApi",
-    "result": {
-      "firmware": [
-        "FlyBowlController"
-      ],
-      "verbosity": "NAMES",
-      "functions": [
-        "setIrBacklightsOnAtPower",
-        "setVisibleBacklightsOnAtPower",
-        "addVisibleBacklightsPwm",
-        "addExperimentStep",
-        "getExperimentSteps",
-        "getExperimentStatus"
-      ],
-      "parameters": [
-        "pulse_delay",
-        "pulse_period",
-        "pulse_on_duration",
-        "pulse_count",
-        "sequence_off_duration",
-        "sequence_count",
-        "step_delay",
-        "step_duration"
-      ],
-      "properties": [
-        "flyBowlsEnabled"
-      ],
-      "callbacks": [
-        "setIrBacklightsOn",
-        "setIrBacklightsOff",
-        "toggleIrBacklights",
-        "setVisibleBacklightsOn",
-        "setVisibleBacklightsOff",
-        "toggleVisibleBacklights",
-        "removeAllExperimentSteps",
-        "runExperiment",
-        "stopExperiment"
-      ]
-    }
-  }
+
 #+END_SRC
 
 *** API GENERAL
