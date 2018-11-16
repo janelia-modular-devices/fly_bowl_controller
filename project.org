@@ -33,8 +33,10 @@
       #       ],
       #       "verbosity": "NAMES",
       #       "functions": [
-      #         "setIrBacklightsOnAtIntensity",
-      #         "setVisibleBacklightsOnAtIntensity",
+      #         "setIrBacklightsAndFansOnAtPower",
+      #         "setIrBacklightsAndFansOnAtIntensity",
+      #         "setVisibleBacklightsAndIndicatorsOnAtPower",
+      #         "setVisibleBacklightsAndIndicatorsOnAtIntensity",
       #         "addVisibleBacklightsPwm",
       #         "addExperimentStep",
       #         "getExperimentSteps",
@@ -54,10 +56,10 @@
       #         "flyBowlsEnabled"
       #       ],
       #       "callbacks": [
-      #         "setIrBacklightsOn",
-      #         "setIrBacklightsOff",
-      #         "setVisibleBacklightsOn",
-      #         "setVisibleBacklightsOff",
+      #         "setIrBacklightsAndFansOn",
+      #         "setIrBacklightsAndFansOff",
+      #         "setVisibleBacklightsAndIndicatorsOn",
+      #         "setVisibleBacklightsAndIndicatorsOff",
       #         "removeAllExperimentSteps",
       #         "runExperiment",
       #         "stopExperiment"
@@ -110,9 +112,9 @@
       #     14.770000
       #   ]
       # }
-      setIrBacklightsOnAtIntensity 4.5
+      setIrBacklightsAndFansOnAtIntensity 4.5
       # {
-      #   "id": "setIrBacklightsOnAtIntensity",
+      #   "id": "setIrBacklightsAndFansOnAtIntensity",
       #   "result": null
       # }
       removeAllExperimentSteps
@@ -215,14 +217,14 @@
       #     "sequence_count": 0
       #   }
       # }
-      setVisibleBacklightsOnAtIntensity 4.6
+      setVisibleBacklightsAndIndicatorsOnAtIntensity 4.6
       # {
-      #   "id": "setVisibleBacklightsOnAtIntensity",
+      #   "id": "setVisibleBacklightsAndIndicatorsOnAtIntensity",
       #   "result": null
       # }
-      setVisibleBacklightsOff
+      setVisibleBacklightsAndIndicatorsOff
       # {
-      #   "id": "setVisibleBacklightsOff",
+      #   "id": "setVisibleBacklightsAndIndicatorsOff",
       #   "result": null
       # }
       addVisibleBacklightsPwm ?
@@ -253,9 +255,9 @@
       #   "id": "stopPwm",
       #   "result": null
       # }
-      setIrBacklightsOff
+      setIrBacklightsAndFansOff
       # {
-      #   "id": "setIrBacklightsOff",
+      #   "id": "setIrBacklightsAndFansOff",
       #   "result": null
       # }
     #+END_SRC
@@ -276,7 +278,7 @@
       # [5.99, 5.59, 5.41, 5.57]
       dev.visible_backlight_power_to_intensity_ratio('setValue',[14.66,15.87,14.04,14.77])
       # [14.66, 15.87, 14.04, 14.77]
-      dev.set_ir_backlights_on_at_intensity(4.5) # 4.5 mW/mm^2. Automatically turns fans on too
+      dev.set_ir_backlights_and_fans_on_at_intensity(4.5) # 4.5 mW/mm^2
       dev.remove_all_experiment_steps()
       intensity = 1.71 # 1.71 mW/mm^2
       pulse_period = 100 # 100 ms
@@ -350,8 +352,8 @@
       #  'experiment_step_count': 2,
       #  'sequence_index': 0,
       #  'sequence_count': 0}
-      dev.set_visible_backlights_on_at_intensity(4.6) # 4.6 mW/mm^2
-      dev.set_visible_backlights_off()
+      dev.set_visible_backlights_and_indicators_on_at_intensity(4.6) # 4.6 mW/mm^2
+      dev.set_visible_backlights_and_indicators_off()
       dev.add_visible_backlights_pwm('?')
       # {'name': 'addVisibleBacklightsPwm',
       #  'firmware': 'FlyBowlController',
@@ -372,7 +374,7 @@
                                                  pulse_on_duration,
                                                  pulse_count)
       dev.stop_pwm(pwm_index)
-      dev.set_ir_backlights_off() # Automatically turns fans off too
+      dev.set_ir_backlights_and_fans_off()
     #+END_SRC
 
 *** Matlab
@@ -405,7 +407,7 @@
       % [5.99]    [5.59]    [5.41]    [5.57]
       dev.visibleBacklightPowerToIntensityRatio('setValue',{14.66,15.87,14.04,14.77})
       % [14.66]    [15.87]    [14.04]    [14.77]
-      dev.setIrBacklightsOnAtIntensity(4.5); % 4.5 mW/mm^2. Automatically turns on fans too
+      dev.setIrBacklightsAndFansOnAtIntensity(4.5); % 4.5 mW/mm^2
       dev.removeAllExperimentSteps();
       intensity = 1.71; % 1.71 mW/mm^2
       pulse_period = 100; % 100 ms
@@ -481,8 +483,8 @@
       % experiment_step_count: 2
       %        sequence_index: 0
       %        sequence_count: 0
-      dev.setVisibleBacklightsOnAtIntensity(4.6); % 4.6 mW/mm^2
-      dev.setVisibleBacklightsOff();
+      dev.setVisibleBacklightsAndIndicatorsOnAtIntensity(4.6); % 4.6 mW/mm^2
+      dev.setVisibleBacklightsAndIndicatorsOff();
       intensity = 6.0; % 6.0 mW/mm^2
       pulse_delay = 1000; % 1000 ms
       pulse_period = 100; % 100 ms
@@ -494,7 +496,7 @@
                                               pulse_on_duration, ...
                                               pulse_count);
       dev.stopPwm(pwm_index);
-      dev.setIrBacklightsOff();
+      dev.setIrBacklightsAndFansOff();
       dev.close();
       clear dev;
     #+END_SRC
