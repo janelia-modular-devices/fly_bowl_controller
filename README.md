@@ -53,7 +53,7 @@
 -   **License:** BSD, Open-Source Hardware
 -   **URL:** <https://github.com/janelia-modular-devices/fly_bowl_controller>
 -   **Author:** Peter Polidoro
--   **Email:** peterpolidoro@gmail.com
+-   **Email:** peter@polidoro.io
 
 
 <a id="org1b867b1"></a>
@@ -684,7 +684,7 @@ intensity = 1.71 mW/mm^2 (power = 25 %)
 -   **License:** Open-Source Hardware
 -   **URL:** <https://github.com/janelia-kicad/backlight_controller_5x3>
 -   **Author:** Peter Polidoro
--   **Email:** peterpolidoro@gmail.com
+-   **Email:** peter@polidoro.io
 
 1.  Description
 
@@ -823,7 +823,7 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
 -   **License:** Open-Source Hardware
 -   **URL:** <https://github.com/janelia-kicad/fly_bowl_wiring>
 -   **Author:** Peter Polidoro
--   **Email:** peterpolidoro@gmail.com
+-   **Email:** peter@polidoro.io
 
 1.  Description
 
@@ -951,7 +951,7 @@ Send gerbers zip file to your favorite PCB manufacturer for fabrication.
 -   **License:** BSD
 -   **URL:** <https://github.com/janelia-arduino/FlyBowlController>
 -   **Author:** Peter Polidoro
--   **Email:** peterpolidoro@gmail.com
+-   **Email:** peter@polidoro.io
 
 1.  Description
 
